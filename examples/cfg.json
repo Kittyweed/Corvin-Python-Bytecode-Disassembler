@@ -1,0 +1,147 @@
+{
+  "blocks": {
+    "0": {
+      "id": 0,
+      "start_offset": 0,
+      "end_offset": 10,
+      "instructions": [
+        {
+          "offset": 0,
+          "opname": "RESUME",
+          "arg": 31744,
+          "argrepr": "31744",
+          "line": 16
+        },
+        {
+          "offset": 2,
+          "opname": "LOAD_FAST",
+          "arg": 25600,
+          "argrepr": "25600",
+          "line": 17
+        },
+        {
+          "offset": 4,
+          "opname": "LOAD_CONST",
+          "arg": 27393,
+          "argrepr": "27393",
+          "line": 17
+        },
+        {
+          "offset": 6,
+          "opname": "COMPARE_OP",
+          "arg": 68,
+          "argrepr": "68",
+          "line": 17
+        },
+        {
+          "offset": 8,
+          "opname": "CACHE",
+          "arg": null,
+          "argrepr": "",
+          "line": 17
+        },
+        {
+          "offset": 10,
+          "opname": "POP_JUMP_IF_FALSE",
+          "arg": 30977,
+          "argrepr": "30977",
+          "line": 17
+        }
+      ],
+      "successors": [
+        1
+      ],
+      "predecessors": []
+    },
+    "1": {
+      "id": 1,
+      "start_offset": 12,
+      "end_offset": 22,
+      "instructions": [
+        {
+          "offset": 12,
+          "opname": "RETURN_CONST",
+          "arg": 31746,
+          "argrepr": "31746",
+          "line": 18
+        },
+        {
+          "offset": 14,
+          "opname": "LOAD_FAST",
+          "arg": 25600,
+          "argrepr": "25600",
+          "line": 19
+        },
+        {
+          "offset": 16,
+          "opname": "LOAD_CONST",
+          "arg": 27395,
+          "argrepr": "27395",
+          "line": 19
+        },
+        {
+          "offset": 18,
+          "opname": "COMPARE_OP",
+          "arg": 68,
+          "argrepr": "68",
+          "line": 19
+        },
+        {
+          "offset": 20,
+          "opname": "CACHE",
+          "arg": null,
+          "argrepr": "",
+          "line": 19
+        },
+        {
+          "offset": 22,
+          "opname": "POP_JUMP_IF_FALSE",
+          "arg": 30977,
+          "argrepr": "30977",
+          "line": 19
+        }
+      ],
+      "successors": [
+        2
+      ],
+      "predecessors": [
+        0
+      ]
+    },
+    "2": {
+      "id": 2,
+      "start_offset": 24,
+      "end_offset": 26,
+      "instructions": [
+        {
+          "offset": 24,
+          "opname": "RETURN_CONST",
+          "arg": 30980,
+          "argrepr": "30980",
+          "line": 21
+        },
+        {
+          "offset": 26,
+          "opname": "RETURN_CONST",
+          "arg": 5,
+          "argrepr": "'Low'",
+          "line": 21
+        }
+      ],
+      "successors": [],
+      "predecessors": [
+        1
+      ]
+    }
+  },
+  "edges": [
+    {
+      "from": 0,
+      "to": 1
+    },
+    {
+      "from": 1,
+      "to": 2
+    }
+  ]
+}

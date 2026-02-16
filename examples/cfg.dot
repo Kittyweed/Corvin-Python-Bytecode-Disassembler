@@ -1,0 +1,9 @@
+digraph ControlFlow {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+    0 [label="Block 0\n0: RESUME\n2: LOAD_FAST\n4: LOAD_CONST\n6: COMPARE_OP\n8: CACHE\n..."];
+    1 [label="Block 1\n12: RETURN_CONST\n14: LOAD_FAST\n16: LOAD_CONST\n18: COMPARE_OP\n20: CACHE\n..."];
+    2 [label="Block 2\n24: RETURN_CONST\n26: RETURN_CONST"];
+    0 -> 1;
+    1 -> 2;
+}

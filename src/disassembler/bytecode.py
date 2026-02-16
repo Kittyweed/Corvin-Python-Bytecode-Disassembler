@@ -55,22 +55,32 @@ class BytecodeDisassembler:
             offset += 2
 
     def _resolve_arg(self, op: int, arg: int) -> Tuple[any, str]:
-        if op in dis.hasconst:
-            const = self.code_object.co_consts[arg]
-            return const, repr(const)
-        elif op in dis.hasname:
-            name = self.code_object.co_names[arg]
-            return name, name
-        elif op in dis.haslocal:
-            name = self.code_object.co_varnames[arg]
-            return name, name
-        elif op in dis.hasfree:
-            name = self.code_object.co_cellvars[arg] if arg < len(self.code_object.co_cellvars) else self.code_object.co_freevars[arg - len(self.code_object.co_cellvars)]
-            return name, name
-        elif op in dis.hasjabs or op in dis.hasjrel:
-            return arg, str(arg)
-        else:
-            return arg, str(arg)
+        try:
+            if op in dis.hasconst:
+                const = self.code_object.co_consts[arg]
+                return const, repr(const)
+            elif op in dis.hasname:
+                if arg < len(self.code_object.co_names):
+                    name = self.code_object.co_names[arg]
+                    return name, name
+            elif op in dis.haslocal:
+                if arg < len(self.code_object.co_varnames):
+                    name = self.code_object.co_varnames[arg]
+                    return name, name
+            elif op in dis.hasfree:
+                cellvars_len = len(self.code_object.co_cellvars)
+                if arg < cellvars_len:
+                    name = self.code_object.co_cellvars[arg]
+                elif arg - cellvars_len < len(self.code_object.co_freevars):
+                    name = self.code_object.co_freevars[arg - cellvars_len]
+                else:
+                    return arg, str(arg)
+                return name, name
+            elif op in dis.hasjabs or op in dis.hasjrel:
+                return arg, str(arg)
+        except (IndexError, AttributeError):
+            pass
+        return arg, str(arg)
 
     def _calculate_line_number(self, offset: int, lnotab: bytes, first_line: int) -> int:
         line = first_line
